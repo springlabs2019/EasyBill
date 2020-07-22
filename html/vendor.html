@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+     <!-- Bootstrap CSS CDN -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <!-- Our Custom CSS -->
+     <link rel="stylesheet" href="..\css\invoice.css">
+     
+      <!-- jQuery CDN -->
+         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                     $(this).toggleClass('active');
+                 });
+             });
+         
+     </script>
+     <style>
+          * {
+    box-sizing: border-box;
+  }
+  
+  .header {
+    border:  solid gray;
+   
+    border-radius: 10px;
+    padding: 1px;
+    background-color : lightgray;
+    width: 400px;
+  }
+  
+  .menu {
+    width: 25%;
+    float: left;
+    padding: 0px;
+    border: 1px solid gray;
+    margin-left: 10px;
+  }
+  
+  .main {
+    width: 75%;
+    float: left;
+    padding: 15px;
+    border: 1px solid gray;
+    margin-left: 10px;
+  }
+
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+  input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-left: 10px;
+  }
+  
+  .col-25 {
+    float: left;
+    width: 10%;
+    margin-top: 6px;
+    margin-left: 5px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 30%;
+    margin-top: 6px;
+    margin-left: 5px;
+  }
+  
+  .column22 {
+    float: left;
+    width: 500px;
+    padding: 0px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 style="margin-left:20px;">Albatross</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+              <p></p>
+              <li class="active">
+                  <a href="..\index.html"  aria-expanded="false"><i class="material-icons">&#xe871;</i>&nbsp;Dashboard</a><br>
+                <!--  <ul class="collapse list-unstyled" id="homeSubmenu">
+                      <li><a href="#">Home 1</a></li>
+                      <li><a href="#">Home 2</a></li>
+                      <li><a href="#">Home 3</a></li>
+                  </ul>-->
+              </li>
+              <li>
+                  <a href="..\clientsdetails.php"><i style="font-size:15px" class="fa">&#xf0c0;</i>&nbsp;Client's</a><br>
+              </li>
+              <li>
+                  <a href="..\vendordetails.php"><i style='font-size:15px' class='fas'>&#xf500;</i> &nbsp;Vendor</a><br>
+              </li>
+              <li>
+                  <a href="InvoiceDetails.php"><i style="font-size:15px" class="fa">&#xf24a;</i>&nbsp;Invoice</a><br>
+              </li>
+              <li>
+                  <a href="ItemsDeatils.php"><i style="font-size:15px" class="fa">&#xf0e8;</i>&nbsp;Items</a><br>
+              </li>
+          </ul>
+            <!--
+            <ul class="list-unstyled CTAs">
+                <li><a href="#" class="download">Bank details</a></li>
+                <li><a href="#" class="article">Setting</a></li>
+            </ul>-->
+        </nav>
+
+        <div id="content">
+    
+          <nav class="navbar navbar-default" style="width:800px">
+              <div class="container-fluid">
+
+                  <div class="navbar-header">
+                      <button  id="sidebarCollapse"    style="background-color:#083551; color:white;" >
+                          <div class="glyphicon glyphicon-arrow-left"></div>
+                          <div class="glyphicon glyphicon-arrow-right"></div>
+                        </button>
+                  </div>
+
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav navbar-right">
+                         
+                         <a href="..\php\vendordetails.php" class="btn btn-info btn-lg" style="background-color:#083551; font-size:15px;"><span class=""></span> Close </a> 
+                      </ul>
+                  </div>
+              </div>
+          </nav>  
+            
+            <!-- Clients adding starts--> 
+            <div>
+            <div class="row">
+              <div class="column22" >
+            <div class="container" style=" width: 800px;" >
+              <div style="margin-left: 200px;">
+              <div class="header" style="text-align: center; ">
+              <h5><strong> Basic Information </strong></h5>
+            </div><br>
+              <form action="..\php\vendor.php" method="POST">
+                <div class="row">
+                  <div class="col-25" >
+                    <label for="vendor">Vendor</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="Vendor_name" name="Vendor_name" placeholder=" Vendor " style="width: 300px; height: 45px; margin-left: 60px;">
+                  </div>
+                </div>
+                
+              <div class="row">
+      
+                <div class="col-25" >
+                  <label for="First_name">Name</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="First_name" name="First_name" placeholder=" Name" style="width: 300px; height: 45px; margin-left: 60px;">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25" >
+                  <label for="lname">Web_Url</label>
+                </div>
+                <div class="col-75" >
+                  <input type="url" id="Last_name" name="Last_name" placeholder="  Web Url" style=" width: 300px; height: 45px; margin-left: 60px;">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25" >
+                  <label for="city">City</label>
+                </div>
+                <div class="col-75">  
+                  <input type="text" id="City" name="City" style="width: 300px; height: 45px; margin-left: 60px;" placeholder=" City">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25" >
+                  <label for="email">Email</label>
+                </div>
+                <div class="col-75">  
+                  <input type="email" id="E_mail" name="E_mail" style="width: 300px; height: 45px; margin-left: 60px;" placeholder="  yourdomain@gmail.com">
+                </div>
+              </div>            
+             <!-- </form> -->
+            </div>
+          </div><!--Coloum Div-->
+          
+            </div>
+          </div> <br>
+            <input type="submit"  value="Save" style="background-color: #092d44;">
+            </form>
+            </div>
+      
+          </div><!-- Column Div-->
+          </div><!--Row DIV-->
+      
+        </div>
+</body>
+</html>
