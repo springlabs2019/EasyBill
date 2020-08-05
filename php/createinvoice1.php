@@ -214,12 +214,11 @@ function calculate(elementID) {
                 <div class="container-fluid">
 
                 <div class="navbar-header">
-                            <button type="button" id="sidebarCollapse" class="navbar-btn" style="float:left;">
+                            <button  id="sidebarCollapse"style="background-color:#083551; color:white;" >
                                 <span></span>
                                 <span></span>
                                 <span></span>
-                            </button>
-                            
+                              </button>
                         </div>
     
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -319,7 +318,7 @@ function calculate(elementID) {
 
       </div>
 
-      <input type="submit" name="submit" value="Save" style="background-color: #092d44; margin-left: 100px; margin-top:50px; color:white">
+      <input type="submit"  value="Save" style="background-color: #092d44; margin-left: 100px; margin-top:50px; color:white">
         </from>
         </div>
     </div>
@@ -356,7 +355,7 @@ function calculate(elementID) {
          </script>
         <!--Calculation Script-->
         <script>     
-            
+            /*
             //document.getElementById('date-field').value = new Date().toISOString().slice(0, 10);
                  
             $(document).ready(function() {
@@ -389,7 +388,7 @@ function calculate(elementID) {
             
             
             });
-            
+            */
             </script>
 
 

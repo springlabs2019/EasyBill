@@ -75,7 +75,7 @@
                 <ul class="list-unstyled components">
                     <p></p>
                     <li class="active">
-                        <a href="..\index.html"  aria-expanded="false"><i class="material-icons">&#xe871;</i>&nbsp;Dashboard</a><br>
+                        <a href="..\index.php"  aria-expanded="false"><i class="material-icons">&#xe871;</i>&nbsp;Dashboard</a><br>
                       <!--  <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li><a href="#">Home 1</a></li>
                             <li><a href="#">Home 2</a></li>
@@ -106,13 +106,20 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
     
-                        <div class="navbar-header">
+                        <!-- <div class="navbar-header">
                             <button  id="sidebarCollapse"    style="background-color:#083551; color:white;" >
                                 <div class="glyphicon glyphicon-arrow-left"></div>
                                 <div class="glyphicon glyphicon-arrow-right"></div>
                               </button>
                         </div>
-    
+     -->                <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="navbar-btn" style="float:left;">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            
+                        </div>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
                                

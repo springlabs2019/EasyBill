@@ -41,7 +41,7 @@ $records = mysql_query("SELECT * FROM invoice limit $start_from,$num_per_page");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -64,7 +64,7 @@ $records = mysql_query("SELECT * FROM invoice limit $start_from,$num_per_page");
             <ul class="list-unstyled components">
                     <p></p>
                     <li class="active">
-                        <a href="..\index.html"  aria-expanded="false"><i class="material-icons">&#xe871;</i>&nbsp;Dashboard</a><br>
+                        <a href="..\index.php"  aria-expanded="false"><i class="material-icons">&#xe871;</i>&nbsp;Dashboard</a><br>
                       <!--  <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li><a href="#">Home 1</a></li>
                             <li><a href="#">Home 2</a></li>
@@ -96,11 +96,20 @@ $records = mysql_query("SELECT * FROM invoice limit $start_from,$num_per_page");
         <nav class="navbar navbar-default">
                     <div class="container-fluid">
     
-                        <div class="navbar-header">
+                        <!-- <div class="navbar-header">
                             <button  id="sidebarCollapse"    style="background-color:#083551; color:white;" >
                                 <div class="glyphicon glyphicon-arrow-left"></div>
                                 <div class="glyphicon glyphicon-arrow-right"></div>
                               </button>
+                              
+                        </div> -->
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="navbar-btn" style="float:left;">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            
                         </div>
     
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -176,7 +185,7 @@ $message = "Data deleted successfully !";
     <td><?php echo $invoice["grandtotal"];?></td>
     <td>
       
-      <a href="previewdetails.php?invoiceno=<?php echo $invoice["invoiceno"];?>">Preview</a></td>
+      <a href="previewdetails2.php?invoiceno=<?php echo $invoice["invoiceno"];?>">Preview</a></td>
   </tr>
   <?php
   $i++; 

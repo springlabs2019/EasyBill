@@ -61,7 +61,7 @@ $db_select = mysql_select_db("billing_process", $con);
     </style>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
 <?php
 
 $invoiceno =isset( $_GET['invoiceno'])?$_GET['invoiceno'] : ''; 
