@@ -248,7 +248,7 @@ chart.render();
                 ?>
                 <br>
                 <h5 style="textalign:ceter">Top 5 Clients By Collection</h5>
-                <table class="table table-hover table-dark">
+                <table class="table table-hover table-gray">
                     <thead>
                         <tr>
                         <th scope="col">Client Name</th>
