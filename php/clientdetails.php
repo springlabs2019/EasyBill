@@ -4,7 +4,41 @@
 <!--Clients1.php-->
 <?php
 
-$con = mysql_connect("localhost","root@localhost","");
+	//Connect To Database
+	
+	$dbname="easybill";
+    $usertable="clients_services";
+    
+    include 'DBConnection.php';
+	
+/*	$hostname="localhost";
+	$username="bhaskar";
+	$password="Spring@123";
+	$dbname="easybill";
+    $usertable="clientdetails";
+
+    
+    
+        $conn = mysqli_connect($hostname,$username, $password, $dbname) ;
+	//mysqli_select_db($dbname);
+
+    if(mysqli_connect_error())
+    {
+       echo "Failed to connect" . mysqli_connect_error();
+    }
+
+	if(mysqli_ping($conn))
+	{
+	    
+	    echo "Connection OK!!";
+	}
+	else{           
+	    
+	    echo "Error" . mysqli_error();
+    }*/
+    
+
+/*$con = mysql_connect("localhost","root","root");
      if(!$con){
            die("Database Connection failed".mysql_error());
 }else{
@@ -14,9 +48,9 @@ $db_select = mysql_select_db("billing_process", $con);
 }else{
 
    }
-}
+}*/
 
-$query = "select * from clients_services";
+$query = "select * from $usertable";
 
 
 if(isset($_GET['page']))
@@ -30,7 +64,7 @@ if(isset($_GET['page']))
 $num_per_page = 10;
 $start_from = ($page-1)*5;
 
-$records = mysql_query("SELECT * FROM clients_services limit $start_from,$num_per_page");
+$records = mysqli_query($conn, "SELECT * FROM $usertable limit $start_from,$num_per_page");
 
 ?>
 
@@ -50,7 +84,7 @@ $records = mysql_query("SELECT * FROM clients_services limit $start_from,$num_pe
      <!-- Bootstrap CSS CDN -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
      <!-- Our Custom CSS -->
-     <link rel="stylesheet" href="..\css\invoice.css">
+     <link rel="stylesheet" href="../css/invoice.css">
      
       <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -151,12 +185,12 @@ $records = mysql_query("SELECT * FROM clients_services limit $start_from,$num_pe
       $checkbox = $_POST['check'];
       for($i=0;$i<count($checkbox);$i++){
          $del_id = $checkbox[$i]; 
-        mysql_query("DELETE FROM clients_services WHERE organizationtext='".$del_id."'");
+        mysqli_query($conn, "DELETE FROM $usertable WHERE organizationtext='".$del_id."'");
       $message = "Data deleted successfully !"; 
       }
     }
     
-  $result = mysql_query("SELECT * FROM clients_services limit $start_from,$num_per_page");
+  $result = mysqli_query($conn, "SELECT * FROM $usertable limit $start_from,$num_per_page");
   ?>
   </div>
 
@@ -195,24 +229,24 @@ $message = "Data deleted successfully !";
   </thead>
   <?php
   $i=0;
-  while($clients_services = mysql_fetch_assoc($result)) {
+  while($clients_services = mysqli_fetch_assoc($result)) {
   ?>
   <tr>  
       <td><input type="checkbox" id="checkItem" name="check[]" value="<?php echo $clients_services["organizationtext"]; ?>"></td>
-    <td><?php echo $clients_services["organizationtext"]; ?></td>
+    <td><?php echo $clients_services["clientname"]; ?></td>
     <td><?php echo $clients_services["fname"]; ?></td>
     <td><?php echo $clients_services["lname"]; ?></td>
-    <td><?php echo $clients_services["e_mailtext"]; ?></td>
-    <td><?php echo $clients_services["weburltext"]; ?></td>
+    <td><?php echo $clients_services["email"]; ?></td>
+    <td><?php echo $clients_services["weburl"]; ?></td>
     <!--<td>/*<?php echo $clients_services["country"]; ?>*/</td>-->
-    <td><?php echo $clients_services["subject"]; ?></td>
-    <td><?php echo $clients_services["addresstext"]; ?></td>
-    <td><?php echo $clients_services["addresstext2"]; ?></td>
+    <td><?php echo $clients_services["remarks"]; ?></td>
+    <td><?php echo $clients_services["addressline01"]; ?></td>
+    <td><?php echo $clients_services["addressline02"]; ?></td>
     <td><?php echo $clients_services["postalcode"]; ?></td>
-    <td><?php echo $clients_services["citytext"]; ?></td>
-    <td><?php echo $clients_services["statetext"]; ?></td>
-    <td><?php echo $clients_services["mobilenumbertext"]; ?></td>
-    <td><?php echo $clients_services["altnumbertext"]; ?></td>
+    <td><?php echo $clients_services["city"]; ?></td>
+    <td><?php echo $clients_services["state"]; ?></td>
+    <td><?php echo $clients_services["mobile01"]; ?></td>
+    <td><?php echo $clients_services["mobile02"]; ?></td>
   </tr>
   <?php
   $i++; 
@@ -222,9 +256,9 @@ $message = "Data deleted successfully !";
 <div style="margin-left:100px; margin-top:10px;">
 <?php
 
-  $pr_query  = mysql_query("select * from clients_services");
+  $pr_query  = mysqli_query($conn, "select * from $usertable");
 
-  $number = mysql_num_rows($pr_query);
+  $number = mysqli_num_rows($pr_query);
   
   
   /*Getting number of record iin databses */

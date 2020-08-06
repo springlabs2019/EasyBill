@@ -1,6 +1,11 @@
 <?php
 
-  $con = mysql_connect("localhost","root@localhost","");
+	$dbname="easybill";
+    $usertable="vendor";
+    
+    include 'DBConnection.php';
+
+/*  $con = mysql_connect("localhost","root","root");
       if(!$con){
             die("Database Connection failed".mysql_error());
   }else{
@@ -11,8 +16,9 @@
 
     }
   }
+*/
 
-  $query = "select * from vendor";
+  $query = "select * from $usertable";
 
 
   if(isset($_GET['page']))
@@ -26,7 +32,7 @@
   $num_per_page = 10;
   $start_from = ($page-1)*05;
 
-  $records = mysql_query("SELECT * FROM vendor limit $start_from,$num_per_page");
+  $records = mysqli_query($conn,"SELECT * FROM $usertable limit $start_from,$num_per_page");
 
   ?>
 
@@ -141,12 +147,12 @@
     $checkbox = $_POST['check'];
     for($i=0;$i<count($checkbox);$i++){
     $del_id = $checkbox[$i]; 
-    mysql_query("DELETE FROM vendor WHERE Vendor_name='".$del_id."'");
+    mysqli_query($conn,"DELETE FROM $usertable WHERE vendorname='".$del_id."'");
     $message = "Data deleted successfully !";
     }
     }
     
-  $result = mysql_query("SELECT * FROM vendor limit $start_from,$num_per_page");
+  $result = mysqli_query($conn, "SELECT * FROM $usertable limit $start_from,$num_per_page");
   ?>
 
 <div id="snackbar"><?php 
@@ -176,15 +182,15 @@ $message = "Data deleted successfully !";
   </thead>
   <?php
   $i=0;
-  while($vendor = mysql_fetch_assoc($result)) {
+  while($vendor = mysqli_fetch_assoc($result)) {
   ?>
   <tr>
       <td><input type="checkbox" id="checkItem" name="check[]" value="<?php echo $vendor["Vendor_name"]; ?>"></td>
-    <td><?php echo $vendor["Vendor_name"]; ?></td>
-    <td><?php echo $vendor["First_name"]; ?></td>
-    <td><?php echo $vendor["Last_name"]; ?></td>
-    <td><?php echo $vendor["City"]; ?></td>
-    <td><?php echo $vendor["E_mail"]; ?></td>
+    <td><?php echo $vendor["vendorname"]; ?></td>
+    <td><?php echo $vendor["fname"]; ?></td>
+    <td><?php echo $vendor["lname"]; ?></td>
+    <td><?php echo $vendor["city"]; ?></td>
+    <td><?php echo $vendor["email"]; ?></td>
   </tr>
   <?php
   $i++; 
@@ -194,9 +200,9 @@ $message = "Data deleted successfully !";
   <div style="margin-left:500px; margin-top:10px;">
 <?php
 
-  $ve_query  = mysql_query("select * from vendor");
+  $ve_query  = mysqli_query($conn, "select * from $usertable");
 
-  $venumber = mysql_num_rows($ve_query);
+  $venumber = mysqli_num_rows($ve_query);
   
   
   /*Getting number of record iin databses */
