@@ -1,16 +1,23 @@
 <?php
 
-$con = mysql_connect("localhost","root@localhost","");
+$dbname="easybill";
+$usertable="invoicedetails";
+    
+include 'DBConnection.php';
+
+/*
+$con = mysqli_connect("localhost","bhaskar@localhost","Spring@123");
      if(!$con){
            die("Database Connection failed".mysql_error());
 }else{
-$db_select = mysql_select_db("billing_process", $con);
+$db_select = mysql_select_db("easybill", $con);
      if(!$db_select){
            die("Database selection failed".mysql_error());
 }else{
 
    }
 }
+*/
 
 ?>
 <!-- Graph  -->
@@ -173,9 +180,9 @@ chart.render();
                     <li><a href="#" class="article">Setting</a></li>
                 </ul>-->
             </nav><?php
-            $countinvoice = mysql_query("select count(1) FROM invoice");
-            $countclients = mysql_query("select count(1) FROM clients_services");
-            $countvendor = mysql_query("select count(1) FROM vendor");
+            $countinvoice = mysqli_query($conn, "select count(1) FROM invoice");
+            $countclients = mysqli_query($conn,"select count(1) FROM clients_services");
+            $countvendor = mysqli_query($conn,"select count(1) FROM vendor");
 
             $row1 = mysql_fetch_array($countinvoice);
             $row2 = mysql_fetch_array($countclients);
@@ -244,7 +251,7 @@ chart.render();
                 </div>
                 <div class="column">
                 <?php 
-                $topfive = mysql_query("SELECT clientname,invoiceno,grandtotal FROM invoice WHERE grandtotal ORDER BY grandtotal DESC LIMIT 5;");
+                $topfive = mysqli_query($conn, "SELECT clientname,invoiceno,grandtotal FROM invoice WHERE grandtotal ORDER BY grandtotal DESC LIMIT 5;");
                 ?>
                 <br>
                 <h5 style="textalign:ceter">Top 5 Clients By Collection</h5>

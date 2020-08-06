@@ -1,6 +1,13 @@
 <?php
 
-  $con = mysql_connect("localhost","root@localhost","");
+
+	$dbname="easybill";
+    $usertable="items_details";
+    
+    include 'DBConnection.php';
+    
+
+/*  $con = mysql_connect("localhost","root","root");
       if(!$con){
             die("Database Connection failed".mysql_error());
   }else{
@@ -10,9 +17,11 @@
   }else{
 
     }
-  }
+  }*/
+  
+  
 
-  $query = "select * from items_details ";
+  $query = "select * from $usertable ";
 
 
   if(isset($_GET['page']))
@@ -26,13 +35,14 @@
   $num_per_page = 10;
   $start_from = ($page-1)*05;
 
-  $records = mysql_query("SELECT * FROM items_details limit $start_from,$num_per_page");
+  $records = mysqli_query($conn,"SELECT * FROM $usertable limit $start_from,$num_per_page");
 
   ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>EasyBill</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -46,7 +56,7 @@
      <!-- Bootstrap CSS CDN -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
      <!-- Our Custom CSS -->
-     <link rel="stylesheet" href="..\css\invoice.css">
+     <link rel="stylesheet" href="../css/invoice.css">
      
       <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -69,7 +79,7 @@
             <!-- Sidebar Holder -->
             <nav id="sidebar">
                 <div class="sidebar-header">
-                    <h3 style="margin-left:20px;">Easy Billing</h3>
+                    <h3 style="margin-left:20px;"> Albatross</h3>
                 </div>
     
                 <ul class="list-unstyled components">
@@ -141,12 +151,12 @@
     $checkbox = $_POST['check'];
     for($i=0;$i<count($checkbox);$i++){
     $del_id = $checkbox[$i]; 
-    mysql_query("DELETE FROM items_details WHERE Product_name='".$del_id."'");
+    mysqli_query($conn, "DELETE FROM $usertable WHERE itemname='".$del_id."'");
     $message = "Data deleted successfully !";
     }
     }
     
-  $result = mysql_query("SELECT * FROM items_details limit $start_from,$num_per_page");
+  $result = mysqli_query($conn, "SELECT * FROM $usertable limit $start_from,$num_per_page");
   ?>
 
 <div id="snackbar"><?php 
@@ -174,14 +184,14 @@ $message = "Data deleted successfully !";
   </thead>
   <?php
   $i=0;
-  while($items_details = mysql_fetch_assoc($result)) {
+  while($items_details = mysqli_fetch_assoc($result)) {
   ?>
   <tr>
       <td><input type="checkbox" id="checkItem" name="check[]" value="<?php echo $items_details["Product_name"]; ?>"></td>
-    <td><?php echo $items_details["Product_name"]; ?></td>
-    <td><?php echo $items_details["Quantity"]; ?></td>
-    <td><?php echo $items_details["Price"]; ?></td>
-    <td><?php echo $items_details["Description"];?></td>
+    <td><?php echo $items_details["itemname"]; ?></td>
+    <td><?php echo $items_details["quantity"]; ?></td>
+    <td><?php echo $items_details["price"]; ?></td>
+    <td><?php echo $items_details["description"];?></td>
   </tr>
   <?php
   $i++; 
@@ -191,9 +201,9 @@ $message = "Data deleted successfully !";
   <div style="margin-left:500px; margin-top:10px;">
 <?php
 
-  $It_query  = mysql_query("select * from items_details");
+  $It_query  = mysqli_query($conn,"select * from $usertable");
 
-  $Itnumber = mysql_num_rows($It_query);
+  $Itnumber = mysqli_num_rows($It_query);
   
   
   /*Getting number of record iin databses */

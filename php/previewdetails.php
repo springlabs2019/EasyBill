@@ -1,6 +1,11 @@
 <?php
 
-$con = mysql_connect("localhost","root@localhost","");
+	$dbname="easybill";
+    $usertable="invoice";
+    
+    include 'DBConnection.php';
+
+/*$con = mysql_connect("localhost","root","root");
      if(!$con){
            die("Database Connection failed".mysql_error());
 }else{
@@ -10,7 +15,13 @@ $db_select = mysql_select_db("billing_process", $con);
 }else{
 
    }
-}
+}*/
+
+$query = "select * from invoice";
+$result = mysql_query("SELECT * FROM invoice");
+$query2 = "select * from  itemsdetails";
+$result2 = mysql_query("SELECT * FROM invoice");
+
 
 ?>
 
