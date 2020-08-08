@@ -3,34 +3,34 @@
 $dbname="easybill";
 $usertable="invoicedetails";
     
-include 'DBConnection.php';
+include 'php/DBConnection.php';
 
-/*
-$con = mysqli_connect("localhost","bhaskar@localhost","Spring@123");
-     if(!$con){
+
+//$conn = mysqli_connect("localhost","bhaskar","Spring@123", "easybill");
+/*     if(!$con){
            die("Database Connection failed".mysql_error());
 }else{
-$db_select = mysql_select_db("easybill", $con);
+$db_select = mysql_select_db("easybill", $conn);
      if(!$db_select){
            die("Database selection failed".mysql_error());
 }else{
 
    }
-}
-*/
+}*/
+
 
 ?>
 <!-- Graph  -->
 <?php
  
  $dataPoints = array(
-     array("y" =>  5, "label" => "Sunday"),
-     array("y" =>  10, "label" => "Monday"),
-     array("y" =>  21, "label" => "Tuesday"),
-     array("y" =>  15, "label" => "Wednesday"),
-     array("y" =>  25, "label" => "Thursday"),
-     array("y" =>  20, "label" => "Friday"),
-     array("y" =>  0, "label" => "Saturday")
+     array("y" =>  5, "label" => "Jan"),
+     array("y" =>  10, "label" => "Feb"),
+     array("y" =>  21, "label" => "Mar"),
+     array("y" =>  15, "label" => "Apr"),
+     array("y" =>  25, "label" => "May"),
+     array("y" =>  20, "label" => "Jun"),
+     array("y" =>  0, "label" => "Jul")
  );
  
  ?>
@@ -44,7 +44,7 @@ $db_select = mysql_select_db("easybill", $con);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -53,8 +53,10 @@ $db_select = mysql_select_db("easybill", $con);
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     
+    
+    
      <!-- Bootstrap CSS CDN -->
-     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
      <!-- Our Custom CSS -->
      <link rel="stylesheet" href="css\invoice.css">
     
@@ -79,7 +81,7 @@ window.onload = function () {
  
 var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
-		text: "Number of invoice in days"
+		text: "Invoice count on Months"
 	},
 	axisY: {
 		title: "Number of Invoice"
@@ -198,14 +200,14 @@ chart.render();
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
     
-                        <div class="navbar-header">
-                            <button type="button" id="sidebarCollapse" class="navbar-btn" style="float:left;">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </button>
-                            
+                         <div class="navbar-header">
+                            <button  id="sidebarCollapse" style="background-color:#083551; color:white;" >
+                                <div class="glyphicon glyphicon-arrow-left"></div>
+                                <div class="glyphicon glyphicon-arrow-right"></div>
+                              </button>
+                              
                         </div>
+
     
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <ul class="nav navbar-nav navbar-right">
@@ -215,6 +217,8 @@ chart.render();
                             </div>
                     </div>
                 </nav>
+                
+                
                 
                 <div class="row">
                     <div class="col-sm-4">
@@ -254,7 +258,7 @@ chart.render();
                 $topfive = mysqli_query($conn, "SELECT clientname,invoiceno,grandtotal FROM invoice WHERE grandtotal ORDER BY grandtotal DESC LIMIT 5;");
                 ?>
                 <br>
-                <h5 style="textalign:ceter">Top 5 Clients By Collection</h5>
+                <h5 style="textalign:ceter">Top 5 Clients </h5>
                 <table class="table table-hover table-gray">
                     <thead>
                         <tr>
