@@ -184,9 +184,9 @@ chart.render();
             $countclients = mysqli_query($conn,"select count(1) FROM clients_services");
             $countvendor = mysqli_query($conn,"select count(1) FROM vendor");
 
-            $row1 = mysql_fetch_array($countinvoice);
-            $row2 = mysql_fetch_array($countclients);
-            $row3 = mysql_fetch_array($countvendor);
+            $row1 = mysqli_fetch_array($countinvoice);
+            $row2 = mysqli_fetch_array($countclients);
+            $row3 = mysqli_fetch_array($countvendor);
 
             $totalinvoice = $row1[0];
             $totalclients = $row2[0];
@@ -265,7 +265,7 @@ chart.render();
                     </thead>
                     <?php
                         $i=0;
-                        while($topfiveclients = mysql_fetch_assoc($topfive)) {
+                        while($topfiveclients = mysqli_fetch_assoc($topfive)) {
                     ?>
                     <tbody>
                         <tr>
@@ -292,9 +292,9 @@ chart.render();
 
                         <ul class="topnav">
                             <li><a class="active" href="php\clientdetails.php"><i style="font-size:15px;" class="fa">&#xf0c0;</i>&nbsp;Clients</a></li>
-                            <li><a href="graph.php"><i style='font-size:15px' class='fas'>&#xf500;</i> &nbsp;Vendor</a></li>
+                            <li><a href="php\vendordetails.php"><i style='font-size:15px' class='fas'>&#xf500;</i> &nbsp;Vendor</a></li>
                             <li><a href="php\invoicedetails.php"><i style="font-size:15px" class="fa">&#xf24a;</i>&nbsp;Invoice</a></li>
-                            <li><a href="php\previewdetails.php"><i style="font-size:15px" class="fa">&#xf0e8;</i>&nbsp;items</a></li>
+                            <li><a href="php\itemdetails.php"><i style="font-size:15px" class="fa">&#xf0e8;</i>&nbsp;items</a></li>
                           </ul>
                         <!--Bottom Strip Close-->
                           

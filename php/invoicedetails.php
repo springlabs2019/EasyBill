@@ -1,7 +1,13 @@
 <?php
 
-// include 'Action.php';
+//Connect To Database
 
+$dbname="easybill";
+$usertable="clients_services";
+include 'DBConnection.php';
+
+// include 'Action.php';
+/*
 $con = mysql_connect("localhost","root@localhost","");
      if(!$con){
            die("Database Connection failed".mysql_error());
@@ -12,7 +18,7 @@ $db_select = mysql_select_db("billing_process", $con);
 }else{
 
    }
-}
+}*/
 
 $query = "select * from invoice";
 
@@ -28,7 +34,7 @@ if(isset($_GET['page']))
 $num_per_page = 10;
 $start_from = ($page-1)*10;
 
-$records = mysql_query("SELECT * FROM invoice limit $start_from,$num_per_page");
+$records = mysqli_query($conn, "SELECT * FROM invoice limit $start_from,$num_per_page");
 
 
 
@@ -129,12 +135,12 @@ $records = mysql_query("SELECT * FROM invoice limit $start_from,$num_per_page");
     $checkbox = $_POST['check'];
     for($i=0;$i<count($checkbox);$i++){
     $del_id = $checkbox[$i]; 
-    mysql_query("DELETE FROM invoice WHERE ClientsName='".$del_id."'");
+    mysqli_query($conn, "DELETE FROM invoice WHERE ClientsName='".$del_id."'");
     $message = "Data deleted successfully !";
     }
     }
     
-  $result = mysql_query("SELECT * FROM invoice limit $start_from,$num_per_page");
+  $result = mysqli_query($conn, "SELECT * FROM invoice limit $start_from,$num_per_page");
   ?>
 <div id="snackbar"><?php 
 $message = "Data deleted successfully !"; 
@@ -171,7 +177,7 @@ $message = "Data deleted successfully !";
   </thead>
   <?php
   $i=0;
-  while($invoice = mysql_fetch_assoc($result)) {
+  while($invoice = mysqli_fetch_assoc($result)) {
   ?>
   <tr >
       <td><input type="checkbox" id="checkItem" name="check[]" value="<?php echo $invoice["invoiceno"]; ?>"></td> 
@@ -195,9 +201,9 @@ $message = "Data deleted successfully !";
 <div style="margin-left:100px; margin-top:10px;">
 <?php
 
-  $pr_query  = mysql_query("select * from invoice");
+  $pr_query  = mysqli_query($conn, "select * from invoice");
 
-  $number = mysql_num_rows($pr_query);
+  $number = mysqli_num_rows($pr_query);
   
   
   /*Getting number of record iin databses */

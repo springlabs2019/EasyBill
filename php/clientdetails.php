@@ -163,7 +163,7 @@ $records = mysqli_query($conn, "SELECT * FROM $usertable limit $start_from,$num_
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
                                
-                               <a href="..\html\client.html" class="btn btn-info btn-lg" style="background-color:#083551; font-size:15px;"><span class="glyphicon glyphicon-plus"></span>  New Client </a> 
+                               <a href="..\html\clients.html" class="btn btn-info btn-lg" style="background-color:#083551; font-size:15px;"><span class="glyphicon glyphicon-plus"></span>  New Client </a> 
                             </ul>
                         </div>
                     </div>

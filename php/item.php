@@ -49,7 +49,7 @@
    if ($conn->query($sql) === TRUE) {
        
             echo "<script>                    
-                    window.location.href = 'ItemsDeatils.php';
+                    window.location.href = 'itemsdetails.php';
                     
 /*                    $(function(){
   

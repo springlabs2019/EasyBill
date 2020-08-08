@@ -132,7 +132,7 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
                                
-                               <a href="..\html\vendor.html" class="btn btn-info btn-lg" style="background-color:#083551; font-size:15px;"><span class="glyphicon glyphicon-plus"></span>  New Vendor </a> 
+                               <a href="..\html\vendors.html" class="btn btn-info btn-lg" style="background-color:#083551; font-size:15px;"><span class="glyphicon glyphicon-plus"></span>  New Vendor </a> 
                             </ul>
                         </div>
                     </div>

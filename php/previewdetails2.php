@@ -1,6 +1,6 @@
 <?php
 
-$con = mysql_connect("localhost","root@localhost","");
+/*$con = mysql_connect("localhost","root@localhost","");
      if(!$con){
            die("Database Connection failed".mysql_error());
 }else{
@@ -10,7 +10,12 @@ $db_select = mysql_select_db("billing_process", $con);
 }else{
 
    }
-}
+}*/
+
+	$dbname="easybill";
+    $usertable="items_details";
+    
+    include 'DBConnection.php';
 
 ?>
 <!DOCTYPE html>
@@ -102,10 +107,10 @@ $db_select = mysql_select_db("billing_process", $con);
             // $result = mysql_query("SELECT * FROM invoice
             // INNER JOIN invoiceitem ON invoice.invoiceno = invoiceitem.invoiceno WHERE invoice.invoiceno = '$invoiceno'");
 
-            $result1 = mysql_query("SELECT * FROM invoice WHERE invoiceno = '$invoiceno'");
+            $result1 = mysqli_query($conn, "SELECT * FROM invoice WHERE invoiceno = '$invoiceno'");
 
 
-            if($invoice = mysql_fetch_assoc($result1)){
+            if($invoice = mysqli_fetch_assoc($result1)){
             ?>
         <div class="header">
             <a href="#default" class="logo"><img src="..\images\logo.png" alt="logo" style="width:400px" height="100px"></a>
@@ -159,10 +164,10 @@ $invoiceno =isset( $_GET['invoiceno'])?$_GET['invoiceno'] : '';
 // $result = mysql_query("SELECT * FROM invoice
 // INNER JOIN invoiceitem ON invoice.invoiceno = invoiceitem.invoiceno WHERE invoice.invoiceno = '$invoiceno'");
 
- $result1 = mysql_query("SELECT * FROM invoiceitem WHERE invoiceno = '$invoiceno'");
+ $result1 = mysqli_query($conn, "SELECT * FROM invoiceitem WHERE invoiceno = '$invoiceno'");
 // echo "vaule", $result;
 $i=0;
-while($invoice = mysql_fetch_assoc($result1)) {
+while($invoice = mysqli_fetch_assoc($result1)) {
     // $i=0;     
     ?>
             <tbody>
@@ -187,9 +192,9 @@ while($invoice = mysql_fetch_assoc($result1)) {
                     // $result = mysql_query("SELECT * FROM invoice
                     // INNER JOIN invoiceitem ON invoice.invoiceno = invoiceitem.invoiceno WHERE invoice.invoiceno = '$invoiceno'");
                     
-                    $result1 = mysql_query("SELECT * FROM invoice WHERE invoiceno = '$invoiceno'");
+                    $result1 = mysqli_query($conn, "SELECT * FROM invoice WHERE invoiceno = '$invoiceno'");
                     
-                    if($invoice = mysql_fetch_assoc($result1)){
+                    if($invoice = mysqli_fetch_assoc($result1)){
                     ?>
                     <div>
                     <h3 style="float:right; margin-right: 80px;" >Grand Total : <strong><img src="..\images\rupee-indian.png" alt="icon" width="20px" height="20px"> <?php echo $invoice["grandtotal"]; ?></strong></h3>

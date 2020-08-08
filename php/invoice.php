@@ -1,21 +1,44 @@
 <?php 
+
+
+	$dbname="easybill";
+    $usertable="items_details";
+    
+    include 'DBConnection.php';
+    
+
 if(isset($_POST['submit'])){
 
-    $conn= mysqli_connect('localhost','root@localhost','','billing_process');
+    //$conn= mysqli_connect('localhost','bhaskar@localhost','Spring@123','easybill');
 
     $clientname = $_POST["clientname"];
+    
+    echo "clientname ". $clientname;
 
     // $invoiceno = $_POST["invoiceno"];
 
     $invoicedate = $_POST["invoicedate"];
+    
+    echo "invoicedate ". $invoicedate;
 
     $duedate = $_POST["duedate"];
-
-    $p_o_number = $_POST["p_o_number"];
+    
+    echo "duedate ". $duedate;
+    
+    if(!empty($_POST["p_o_number"]))
+        $p_o_number = $_POST["p_o_number"];
+    else
+        $p_o_number = 0;
+    
+    echo "p_o_number ". $p_o_number;
 
     $p_o_date = $_POST["p_o_date"];
+    
+    echo "p_o_date ". $p_o_date;
 
     $paymentterms = $_POST["paymentterms"];
+    
+    echo "paymentterms ". $paymentterms;
 
     // $invoice_no = $_POST["invoice_no"];
 
@@ -38,11 +61,13 @@ if(isset($_POST['submit'])){
    
 
     $sql = "INSERT INTO invoice (clientname,invoicedate, duedate, p_o_number,p_o_date,paymentterms,grandtotal)
-    VALUES ('$clientname','$invoicedate','$duedate','$p_o_number','$p_o_date','$paymentterms','$grandtotal')";
+    VALUES ('$clientname','$invoicedate','$duedate','{$p_o_number}','$p_o_date','$paymentterms','$grandtotal')";
 
-    $query= mysqli_query($conn,$sql);
+    //$query= mysqli_query($conn,$sql);
+    
+    echo "sql: " . $sql;
 
-    if($query){
+    if($conn->query($sql)){
         $sqlinvoice = "SELECT invoiceno FROM invoice ORDER BY invoiceno DESC LIMIT 1";
 
         $result = mysqli_query ( $conn , $sqlinvoice);
@@ -68,6 +93,7 @@ if(isset($_POST['submit'])){
          }
         
     } else{
+        
 
     }
 

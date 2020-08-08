@@ -1,6 +1,12 @@
 <?php
 
-  $con = mysql_connect("localhost","root@localhost","");
+	$dbname="easybill";
+    $usertable="items_details";
+    
+    include 'DBConnection.php';
+    
+
+/*  $con = mysql_connect("localhost","root@localhost","");
       if(!$con){
             die("Database Connection failed".mysql_error());
   }else{
@@ -11,14 +17,14 @@
 
     }
   }
-
+*/
   $query = "select * from items_details ";
   $queryitems = "select * from items_details ";
 
   $queryclients = "select * from  clients_services ";
 
-  $resultclinets = mysql_query($queryclients);
-  $resultitems = mysql_query($queryitems);
+  $resultclinets = mysqli_query($conn, $queryclients);
+  $resultitems = mysqli_query($conn, $queryitems);
 
   ?>
 
@@ -235,12 +241,12 @@ function calculate(elementID) {
                 <lable for="Clients"style="margin-left:10px;"><strong>Client's Name</strong></lable><br><br>
 
                 <select id="clientname" name="clientname" placeholder="Enter the Client's Name.." style="width: 300px; height: 30px; border-radius: 5px; margin-left: 10px;"> 
-                <?php while($rows = mysql_fetch_array($resultclinets)):; ?>
+                <?php while($rows = mysqli_fetch_array($resultclinets)):; ?>
                 <option><?php echo $rows[0]; ?></option>
                 <?php  endwhile; ?>
                 </select>
     
-            <hr>
+            <!-- <hr> -->
             <div class="form-row">
             <div class="column"><!--
             <div class="form-group" style="width:300px;">
@@ -298,7 +304,7 @@ function calculate(elementID) {
 			<td style="width: 10px;"><input type="checkbox" name="chk[]"/></td>
 			<td >
             <select name="item[]" id="item" style="width: 100px;">
-            <?php while($rows = mysql_fetch_array($resultitems)):; ?>
+            <?php while($rows = mysqli_fetch_array($resultitems)):; ?>
                 <option><?php echo $rows[0]; ?></option>
                 <?php  endwhile; ?>
             <select>
@@ -320,7 +326,7 @@ function calculate(elementID) {
       </div>
 
       <input type="submit" name="submit" value="Save" style="background-color: #092d44; margin-left: 100px; margin-top:50px; color:white">
-        </from>
+        </form>
         </div>
     </div>
     </div>
