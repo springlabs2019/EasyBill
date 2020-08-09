@@ -155,7 +155,7 @@ $message = "Data deleted successfully !";
           <!--Search button-->
           <div class="col-lg-4">
             <div class="input-group">
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by Clients." title="Type in a name" style="border-radius:5px; height:40px;">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search.." title="Type in a name" style="border-radius:5px; height:40px;">
                 <button type="submit" class="btn btn-success" name="save" style="background-color:#092d44;  margin-left:50px;" onclick="SnackbarFunction()">DELETE</button>
               </div> 
           </div>
