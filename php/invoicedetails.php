@@ -54,6 +54,8 @@ $records = mysqli_query($conn, "SELECT * FROM invoice limit $start_from,$num_per
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <!-- Scarch Option Link -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <!-- Bootstrap CSS CDN -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
      <!-- Our Custom CSS -->
@@ -135,12 +137,12 @@ $records = mysqli_query($conn, "SELECT * FROM invoice limit $start_from,$num_per
     $checkbox = $_POST['check'];
     for($i=0;$i<count($checkbox);$i++){
     $del_id = $checkbox[$i]; 
-    mysqli_query($conn, "DELETE FROM invoice WHERE ClientsName='".$del_id."'");
+    mysqli_query($conn, "DELETE FROM invoice WHERE invoiceno='".$del_id."'");
     $message = "Data deleted successfully !";
     }
     }
     
-  $result = mysqli_query($conn, "SELECT * FROM invoice limit $start_from,$num_per_page");
+  $result = mysqli_query($conn, "SELECT * FROM invoice ORDER BY invoiceno DESC limit $start_from,$num_per_page");
   ?>
 <div id="snackbar"><?php 
 $message = "Data deleted successfully !"; 
@@ -175,6 +177,7 @@ $message = "Data deleted successfully !";
 <!--<th><input type="checkbox" id="checkAl"> Select All</th>-->
 </tr>
   </thead>
+  <tbody id="searchTable">
   <?php
   $i=0;
   while($invoice = mysqli_fetch_assoc($result)) {
@@ -197,6 +200,7 @@ $message = "Data deleted successfully !";
   $i++; 
   }
   ?>
+  </tbody>
   </table>
 <div style="margin-left:100px; margin-top:10px;">
 <?php
@@ -237,25 +241,16 @@ $message = "Data deleted successfully !";
   });
 
   </script>
-  <script>
-  function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter)> -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-} 
+   <!-- Serach Oprion  -->
+   <script>
+  $(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#searchTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 </script>
   <!-- jQuery CDN -->
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
