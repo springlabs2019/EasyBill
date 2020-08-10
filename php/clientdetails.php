@@ -116,15 +116,15 @@ $records = mysqli_query($conn, "SELECT * FROM $usertable limit $start_from,$num_
                 <ul class="list-unstyled components">
                     <p></p>
                     <li class="active">
-                        <a href="..\index.php"  aria-expanded="false"><i class="material-icons">&#xe871;</i>&nbsp;Dashboard</a><br>
+                        <a href="..\index.php" ><i class="material-icons">&#xe871;</i>&nbsp;Dashboard</a><br>
                       <!--  <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li><a href="#">Home 1</a></li>
                             <li><a href="#">Home 2</a></li>
                             <li><a href="#">Home 3</a></li>
                         </ul>-->
                     </li>
-                    <li>
-                        <a href="clientdetails.php"><i style="font-size:15px" class="fa">&#xf0c0;</i>&nbsp;Client's</a><br>
+                    <li >
+                        <a href="clientdetails.php" aria-expanded="true" ><i style="font-size:15px" class="fa">&#xf0c0;</i>&nbsp;Client's</a><br>
                     </li>
                     <li>
                         <a href="vendordetails.php"><i style='font-size:15px' class='fas'>&#xf500;</i> &nbsp;Vendor</a><br>

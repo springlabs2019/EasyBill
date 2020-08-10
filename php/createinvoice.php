@@ -195,13 +195,13 @@ function calculate(elementID) {
                         </ul>-->
                     </li>
                     <li>
-                        <a href="clientdetails.php"><i style="font-size:15px" class="fa">&#xf0c0;</i>&nbsp;Client's</a><br>
+                        <a href="clientdetails.php" ><i style="font-size:15px" class="fa">&#xf0c0;</i>&nbsp;Client's</a><br>
                     </li>
                     <li>
                         <a href="vendordetails.php"><i style='font-size:15px' class='fas'>&#xf500;</i> &nbsp;Vendor</a><br>
                     </li>
                     <li>
-                        <a href="invoicedetails.php"><i style="font-size:15px" class="fa">&#xf24a;</i>&nbsp;Invoice</a><br>
+                        <a href="invoicedetails.php" aria-expanded="true"><i style="font-size:15px" class="fa">&#xf24a;</i>&nbsp;Invoice</a><br>
                     </li>
                     <li>
                         <a href="itemdetails.php"><i style="font-size:15px" class="fa">&#xf0e8;</i>&nbsp;Items</a><br>

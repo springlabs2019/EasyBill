@@ -104,7 +104,7 @@
                         <a href="invoicedetails.php"><i style="font-size:15px" class="fa">&#xf24a;</i>&nbsp;Invoice</a><br>
                     </li>
                     <li>
-                        <a href="itemdetails.php"><i style="font-size:15px" class="fa">&#xf0e8;</i>&nbsp;Items</a><br>
+                        <a href="itemdetails.php" aria-expanded="true"><i style="font-size:15px" class="fa">&#xf0e8;</i>&nbsp;Items</a><br>
                     </li>
                 </ul>
                 <!--
